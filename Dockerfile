@@ -13,7 +13,8 @@ RUN echo "deb http://http.debian.net/debian/ $DEBIAN_VERSION main contrib non-fr
         clamav-daemon \
         clamav-freshclam \
         libclamunrar9 \
-        wget && \
+        wget \
+        netcat-openbsd && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -44,3 +45,6 @@ EXPOSE 3310
 # av daemon bootstrapping
 ADD bootstrap.sh /
 CMD ["/bootstrap.sh"]
+
+ADD check.sh /
+HEALTHCHECK --start-period=120s CMD /check.sh

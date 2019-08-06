@@ -3,6 +3,9 @@
 # presented by mko (Markus Kosmal<dude@m-ko.de>)
 set -m
 
+# Security update the system on boot to account for delays in shipping new images
+apt-get update && apt-get -s dist-upgrade | grep "^Inst" | grep -i securi | awk -F " " {'print $2'} | xargs apt-get install
+
 # start clam service itself and the updater in background as daemon
 freshclam -d &
 clamd &
