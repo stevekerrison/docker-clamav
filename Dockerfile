@@ -1,5 +1,5 @@
-FROM alpine:3.9
-LABEL maintainer="Markus Kosmal <dude@m-ko.de> https://m-ko.de"
+FROM alpine:3.10
+LABEL maintainer="Markus Kosmal <dude@m-ko.de> https://m-ko.de, Steve Kerrison <steve@usec.io>"
 
 RUN apk add --no-cache \
     python3 py3-pip bash \
